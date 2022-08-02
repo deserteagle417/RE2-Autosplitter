@@ -12,6 +12,8 @@ To use this autosplitter, in LiveSplit enter the name of the game as one of the 
 
 If using the 1.0 version, your exe name should be "bio2.exe". For version 1.1 (including REbirth), the exe name should be "bio2 v1.1.exe".
 
+This autosplitter starts up before the intro cutscene for each run, upon selecting difficulty or loading the B scenario save, so you no longer have to manually start the splits beforehand to skip the cutscene at the correct time.
+
 ## Supported Categories
 
 * Leon A
