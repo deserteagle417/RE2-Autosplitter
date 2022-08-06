@@ -207,6 +207,7 @@ init
     vars.bombCounter = 0;
     vars.bombCounterPrevious = 0;
     vars.vanilla = 1;
+    vars.endSplitFlag = 0;
 
     //Determine Version
     switch (modules.First().ModuleName)
@@ -377,6 +378,7 @@ update
         vars.stage2 = 0;
         vars.bombCounter = 0;
         vars.bombCounterPrevious = 0;
+        vars.endSplitFlag = 0;
 	}
 
     //Iterate through the inventory slots to return their values
@@ -395,14 +397,16 @@ start
     //return ((current.gameState & 0x40000000) == 0x40000000);
 
     //Check that the last main menu option was selected to begin the run, or that a save was loaded for B scenario -- starts timer after selecting difficulty or loading save so that the cutscene can be skipped at the right time
-    return ((((current.gameState & 0x20000) == 0x20000) && ((old.gameState & 0x20000) != 0x20000)) || (current.hp == 200 && ((current.gameState & 0x8) != 0x8)));
+    //For Hunk/Tofu, start the timer when you exit the map.
+    return ((((current.gameState & 0x20000) == 0x20000) && ((old.gameState & 0x20000) != 0x20000) && !settings["hunk"]) || (settings["hunk"] && (old.gameState & 0x4000) == 0x4000 && (current.gameState & 0x4000) != 0x4000));
 }
 
 split
 {
     //Final Split For Main Campaign -- Always Active
-    if((current.gameState & 0x200000) == 0x200000 && !settings["hunk"] && !settings["ex"])
+    if((current.gameState & 0x200000) == 0x200000 && !settings["hunk"] && !settings["ex"] && vars.endSplitFlag == 0)
     {
+        vars.endSplitFlag++;
         return true;
     }
     
