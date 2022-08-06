@@ -19,7 +19,8 @@ This autosplitter starts up before the intro cutscene for each run, upon selecti
 * Leon A
 * Claire A
 * Leon B
-* Claire B
+* Claire B 
+(***Note that if you are using the old Claire B splits from resources, you need to add an extra split BELOW the existing split 121. The door was double named in the old autosplitter***)
 * The 4th Survivor / Tofu
 * EX Battle
 
