@@ -45,6 +45,7 @@ startup
 		settings.Add("clairea", false, "Claire A Door Splits (185 total splits)");
         settings.Add("leonb", false, "Leon B Door Splits (172 total splits)");
         settings.Add("claireb", false, "Claire B Door Splits (178 total splits)");
+            settings.SetToolTip("claireb", "If you're using the old Claire B splits, you'll need to add an extra split after split 121.");
         settings.Add("low", false, "Remove Magnum Doors for Low% and/or NG+");
             settings.SetToolTip("low", "Skips Watchman's Room in Leon A and STARS Office in Leon B.");
         settings.Add("hunk", false, "4th Survivor/Tofu Door Splits (25 total splits)");
