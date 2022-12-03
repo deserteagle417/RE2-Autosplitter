@@ -399,7 +399,9 @@ start
 
     //Check that the last main menu option was selected to begin the run, or that a save was loaded for B scenario -- starts timer after selecting difficulty or loading save so that the cutscene can be skipped at the right time
     //For Hunk/Tofu, start the timer when you exit the map.
-    return ((((current.gameState & 0x20000) == 0x20000) && ((old.gameState & 0x20000) != 0x20000) && !settings["hunk"]) || (settings["hunk"] && (old.gameState & 0x4000) == 0x4000 && (current.gameState & 0x4000) != 0x4000));
+    return ((((current.gameState & 0x20000) == 0x20000) && ((old.gameState & 0x20000) != 0x20000) && !settings["hunk"]) || //A scenario
+            ((old.oldRoom == 255 && current.oldRoom == 0 && old.hp == 0 && current.hp == 200 && old.roomID == 0 && current.roomID == 4) && (settings["leonb"] || settings["claireb"] || settings["setlb"] || settings["setcb"]) && !settings["hunk"]) || //B scenario
+            (settings["hunk"] && (old.gameState & 0x4000) == 0x4000 && (current.gameState & 0x4000) != 0x4000)); //Hunk/Tofu
 }
 
 split
