@@ -36,6 +36,20 @@ state("bio2 v1.1", "v1.1")
     byte hunkFrames : 0x2897C4;
 }
 
+state("bio2 1.10 - Supreme Skip", "v1.1")
+{
+    uint time       : 0x280588;
+    short hp        : 0x58A046;
+    uint gameState  : 0x589E6C;
+    byte frame      : 0x28058C;
+    byte roomID     : 0x58EB16;
+    byte oldRoom    : 0x58EB1A;
+    byte stageID    : 0x58EB14;
+    byte camID      : 0x58EB18;
+    byte hunkSec    : 0x58EB2A;
+    byte hunkFrames : 0x2897C4;
+}
+
 startup
 {   
     //Enable Door Splits
