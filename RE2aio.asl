@@ -36,7 +36,7 @@ state("bio2 v1.1", "v1.1")
     byte hunkFrames : 0x2897C4;
 }
 
-state("bio2 1.10 - Supreme Skip", "skips")
+state("bio2 1.10 - Supreme Skip", "Supreme Skip")
 {
     uint time       : 0x280588;
     short hp        : 0x58A046;
@@ -235,7 +235,7 @@ init
 			version = "v1.1";
 			break;
         case ("bio2 1.10 - Supreme Skip.exe"):
-			version = "skips";
+			version = "Supreme Skip";
 			break;
 	};
 
