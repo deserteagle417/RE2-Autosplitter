@@ -360,7 +360,7 @@ init
     //Claire A Set Split Door List -- skip 3 for Irons Cutscene
     vars.claireASet = new List<Tuple<int, int, int, int>>
     {
-        Tuple.Create( 0,  3,  0, 1), Tuple.Create( 1, 21, 20, 0), Tuple.Create( 2, 18, 16, 0), Tuple.Create( 4, 13,  2, 2), Tuple.Create( 5,  6,  5, 2), 
+        Tuple.Create( 0,  3,  0, 1), Tuple.Create( 1, 21, 20, 0), Tuple.Create( 2, 18, 16, 0), Tuple.Create( 4, 13,  7, 2), Tuple.Create( 5,  6,  5, 2), 
         Tuple.Create( 6, 12, 10, 1), Tuple.Create( 7, 17, 23, 0), Tuple.Create( 8,  9,  0, 2), Tuple.Create( 9,  7, 13, 3), Tuple.Create(10,  9,  5, 4),
         Tuple.Create(11, 21, 20, 5), Tuple.Create(12, 16, 12, 5), Tuple.Create(13, 21, 20, 5)
     };
