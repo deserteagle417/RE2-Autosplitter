@@ -687,11 +687,27 @@ gameTime
     //This is using the frame counter for Hunk, so it is accurate to within a frame (with rounding). The game may be doing some tricks to make the time appear more random and/or the refresh rate of LiveSplit makes it imperfect.
     if(settings["hunk"])
     {
+        byte seconds = current.hunkSec;
+        byte frames = current.hunkFrames;
+        if (old.hunkSec == seconds && old.hunkFrames > frames)
+        {
+            frames = old.hunkFrames;
+        }
         //subtracting 1 from the frame count on v1.0 because timer was 1-2 frames off on vanilla game, whereas 0-1 frames off on REbirth
-        return (TimeSpan.FromSeconds((double)(current.hunkSec) + (((((current.hunkFrames - vars.versionDetector) % 30) + 30) % 30) / 30.0)));
+        return (TimeSpan.FromSeconds((double)(seconds) + (((((frames - vars.versionDetector) % 30) + 30) % 30) / 30.0)));
     } else {
         //Main game and EX Battle. Since time resets to 0 at the beginning of each stage of EX battle, we make timestamps when completing the episodes and add it to the total time. Time does carry on after hitting door trigger, so LS time will look funny until next stage starts.
-        return (TimeSpan.FromSeconds((double)(current.time) + vars.stage1 + vars.stage2 + (current.frame / 60.0)));
+        uint seconds = current.time;
+        byte frames = current.frame;
+        // when IGT rolls over to the next second, resetting current.frame to 0 and incrementing current.time, it can happen on rare occasions that we grab current.time before the rollover but current.frame
+        // after the rollover. this makes it look like we went back in time a second for a single game-time update. if we're unlucky enough that this happens during a split, it results in a fake time save of
+        // 1 second on the split followed by a fake time loss of 1 second on the next split. so, if we see that our seconds count is the same as last time but our frame count has decreased (ostensibly from
+        // 60 to 0), we'll just report the old time again so we don't go backwards.
+        if (old.time == seconds && old.frame > frames)
+        {
+            frames = old.frame;
+        }
+        return (TimeSpan.FromSeconds((double)(seconds) + vars.stage1 + vars.stage2 + (frames / 60.0)));
     }
 }
 
