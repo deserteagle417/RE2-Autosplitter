@@ -18,7 +18,7 @@ state("bio2", "v1.0")
     byte oldRoom    : 0x58EABA;
     byte stageID    : 0x58EAB4;
     byte camID      : 0x58EAB8;
-    byte hunkSec    : 0x58EACA;
+    uint hunkSec    : 0x58EACA;
     byte hunkFrames : 0x289774;
 }
 
@@ -32,7 +32,7 @@ state("bio2 v1.1", "v1.1")
     byte oldRoom    : 0x58EB1A;
     byte stageID    : 0x58EB14;
     byte camID      : 0x58EB18;
-    byte hunkSec    : 0x58EB2A;
+    uint hunkSec    : 0x58EB2A;
     byte hunkFrames : 0x2897C4;
 }
 
@@ -46,7 +46,7 @@ state("bio2 1.10 - Supreme Skip", "Supreme Skip")
     byte oldRoom    : 0x58EB1A;
     byte stageID    : 0x58EB14;
     byte camID      : 0x58EB18;
-    byte hunkSec    : 0x58EB2A;
+    uint hunkSec    : 0x58EB2A;
     byte hunkFrames : 0x2897C4;
 }
 
@@ -687,7 +687,7 @@ gameTime
     //This is using the frame counter for Hunk, so it is accurate to within a frame (with rounding). The game may be doing some tricks to make the time appear more random and/or the refresh rate of LiveSplit makes it imperfect.
     if(settings["hunk"])
     {
-        byte seconds = current.hunkSec;
+        uint seconds = current.hunkSec;
         byte frames = current.hunkFrames;
         if (old.hunkSec == seconds && old.hunkFrames > frames)
         {
